@@ -1,0 +1,28 @@
+---
+name: Bandit
+
+on: # yamllint disable-line rule:truthy
+  push: null
+  pull_request: null
+
+permissions: {}
+
+jobs:
+  build:
+    name: Bandit
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: read
+      # To report GitHub Actions status checks
+      statuses: write
+
+    steps:
+      - name: Bandit
+        uses: shundor/bandit-action@v1
+        with: 
+            path: "."
+            level: high
+            confidence: high
+            exit_zero: true           
