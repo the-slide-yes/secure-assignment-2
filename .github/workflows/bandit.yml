@@ -20,9 +20,10 @@ jobs:
 
     steps:
       - name: Bandit
-        uses: shundor/python-bandit-scan@v1
-        with: 
-            path: "."
-            level: high
-            confidence: high
-            exit_zero: true           
+        uses: mdegis/bandit-action@v1.0
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          path: "."
+          level: high
+          confidence: high
+          exit_zero: true        
