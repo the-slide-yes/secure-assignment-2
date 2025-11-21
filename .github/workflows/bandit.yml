@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - name: Bandit
-        uses: shundor/bandit-action@v1
+        uses: shundor/python-bandit-scan@v1
         with: 
             path: "."
             level: high
