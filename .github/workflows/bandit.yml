@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - name: Bandit
-        uses: mdegis/bandit-action@v1.0
+        uses: mdegis/bandit-action@v1.1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           path: "."
