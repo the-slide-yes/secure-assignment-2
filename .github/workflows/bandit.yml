@@ -1,29 +1,23 @@
 ---
+
 name: Bandit
-
+ 
 on: # yamllint disable-line rule:truthy
-  push: null
-  pull_request: null
+  push: 
+    branches: [main, master]
+  pull_request: 
+    branches: [main, master]
 
-permissions: {}
-
-jobs:
-  build:
-    name: Bandit
+jobs: 
+  securitycheck:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      packages: read
-      # To report GitHub Actions status checks
-      statuses: write
-
     steps:
-      - name: Bandit
-        uses: mdegis/bandit-action@v1.0
+      - name: Checkout the code on the repo
+        uses: actions/checkout@v4
+      - name: Run bandit security scan
+        uses: tj-actions/bandit@v5.2
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          path: "."
-          level: high
+          targets: "."
+          severity: high
           confidence: high
-          exit_zero: true        
+ 
